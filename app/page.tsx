@@ -12,7 +12,7 @@ import { Poetsen_One, Nunito } from 'next/font/google';
 import Halaney from 'next/font/local';
 import Header from "@/components/ui/Header"
 
-export const poetson_one = Poetsen_One({
+export const poetsonOne = Poetsen_One({
   subsets: ['latin'],
   weight: '400'
 });
@@ -148,7 +148,7 @@ export default function Page() {
                   >
                     <div className="pb-4">
                       <div className="flex items-start justify-between gap-4">
-                        <div className={`flex items-center gap-3 text-xl font-semibold text-gray-900 flex-1 ${poetson_one.className} font-sans`}>                      
+                        <div className={`flex items-center gap-3 text-xl font-semibold text-gray-900 flex-1 ${poetsonOne.className} font-sans`}>                      
                           {item.question}
                         </div>
                         <div className="text-right text-xs text-gray-400 mt-1 flex-shrink-0">

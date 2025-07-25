@@ -12,17 +12,17 @@ import { Poetsen_One, Nunito } from 'next/font/google';
 import Halaney from 'next/font/local';
 import Header from "@/components/ui/Header"
 
-export const poetsonOne = Poetsen_One({
+const poetsonOne = Poetsen_One({
   subsets: ['latin'],
   weight: '400'
 });
 
-export const nunito = Nunito({
+const nunito = Nunito({
   subsets: ['latin'],
   weight: '400'
 });
 
-export const halaney = Halaney({
+const halaney = Halaney({
   src: '../public/Halaney.otf',
   display: 'swap', // recommended for better UX
 });

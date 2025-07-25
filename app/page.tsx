@@ -160,11 +160,10 @@ export default function Page() {
                     <div className="pt-0 space-y-8">
                       {/* Kid Answer */}
                       <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                          <div className="bg-blue-50 text-blue-700 border-blue-200">
+                        
+                          <div className="bg-blue-50 text-slate-600 border-blue-100 inline-block p-1 pr-3 rounded-md mb-2">
                             👶 For a {selectedAge}-year old kid
                           </div>
-                        </div>
 
                         <div className="bg-blue-50 border border-blue-100 rounded-md p-4">
                           <p className="text-gray-800 leading-relaxed">{getKidAnswer(item, selectedAge)}</p>
@@ -173,11 +172,11 @@ export default function Page() {
 
                       {/* Grown-up Answer */}
                       <div className="space-y-4">
-                        <div className="bg-gray-50 text-gray-700 border-gray-200">
+                        <div className="bg-gray-50 text-gray-700 border-gray-200 inline-block p-1 pr-3 rounded-md mb-2">
                           🧑‍🎓 For Grown-Ups
                         </div>
                         <div className="bg-gray-50 border border-gray-100 rounded-md p-4">
-                          <p className="text-gray-700 text-sm leading-relaxed" style={{ whiteSpace: 'pre-wrap' }}>{formatLineBreaks(item.grownup_answer)}</p>
+                          <p className="answer-grownup text-gray-700 text-sm leading-relaxed">{formatLineBreaks(item.grownup_answer)}</p>
                         </div>
                       </div>
                     </div>

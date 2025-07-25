@@ -36,3 +36,7 @@ header {
   -webkit-mask: var(--mask);
           mask: var(--mask);
 }
+
+.answer-grownup {
+  white-space: pre-wrap;
+}

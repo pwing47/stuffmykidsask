@@ -24,7 +24,7 @@ body {
   color: var(--foreground); 
 
   background-color: #FFFFFF;
-background-image: url("sun-tornado.svg");
+/* background-image: url("sun-tornado.svg"); */
 background-attachment: fixed;
 background-size: cover;
 

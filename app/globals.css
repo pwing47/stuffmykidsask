@@ -20,15 +20,19 @@
 }
 
 body {
-  /* background: var(--background);
-  color: var(--foreground); */
+  background: var(--background);
+  color: var(--foreground); 
 
-  background: red;
+  background-color: #FFFFFF;
+background-image: url("sun-tornado.svg");
+background-attachment: fixed;
+background-size: cover;
+
 }
 
 header {
 
-  background: linear-gradient(60deg, #4ECDC4, #00A0B0);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 
   --mask:
     radial-gradient(67.08px at 50% calc(100% - 90px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,

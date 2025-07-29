@@ -33,6 +33,8 @@ export default function Page() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  const [searchTerm, setSearchTerm] = useState("")
+
   const ages = [2, 3, 4, 5, 6, 7] as const
 
   useEffect(() => {
@@ -71,22 +73,38 @@ export default function Page() {
     return answerString.replace("\n/g", "<br/>");
   }
 
+  // Filter questions based on search term
+  const filteredCards = questions.filter(
+    (question) =>
+      getKidAnswer(question, selectedAge).toLowerCase().includes(searchTerm.toLowerCase()) ||
+      question.grownup_answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      question.question.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
   
     return (
-      <div className="min-h-screen bg-purple-50">
+      <div className="min-h-screen">
 
         <Header />
 
         <header className="bg-green-200 border-b border-gray-200 sticky top-0 z-10">
           <div className="container mx-auto px-6 py-6">
-            <h1 className={`text-5xl md:text-6xl font-bold text-center text-gray-900 ${halaney.className}`}>Stuff My Kids Ask</h1>
-            <p className="text-center text-gray-600 mt-3 text-md font-medium">
-              Curious questions deserve thoughtful answers
-            </p>
+            <h1 className={`text-4xl md:text-5xl font-medium text-center text-shadow-lg text-gray-50 select-none ${halaney.className}`}>Stuff My Kids Ask</h1>
+            
+            
+            <div className="max-w-md mx-auto">
+              <input
+                type="text"
+                placeholder="Search questions..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-4 py-2 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/20 transition-all"
+              />
+            </div>
             
             {/* Age Selector */}
             <div className="flex items-center justify-center gap-3 mt-3 mb-6">
-              <span className="text-sm font-medium text-gray-600">Select age:</span>
+              <span className="text-sm font-medium text-gray-200">Select age:</span>
               <div className="flex gap-1">
                 {ages.map((age) => (
                   <div
@@ -95,7 +113,7 @@ export default function Page() {
                     className={`h-8 w-8 p-0 text-sm font-medium transition-all rounded-lg flex justify-center items-center cursor-pointer ${
                       selectedAge === age
                         ? "bg-gray-900 text-white shadow-sm"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                        : "text-gray-200 hover:text-gray-900 hover:bg-gray-100"
                     }`}
                   >
                     {age}
@@ -134,21 +152,21 @@ export default function Page() {
           !loading && !error &&
           <main className={`container mx-auto px-6 py-12 ${nunito.className} font-sans`}>
             <div className="max-w-4xl mx-auto space-y-8">
-              {questions.length === 0 ? (
+              {filteredCards.length === 0 ? (
                 <div className="border border-gray-200 bg-white">
                   <div className="text-center py-12">
                     <p className="text-gray-500">No questions found. Check back later!</p>
                   </div>
                 </div>
               ) : (
-                questions.map((item) => (
+                filteredCards.map((item) => (
                   <div
                     key={item.id}
                     className="group transition-all duration-200 border border-gray-100 bg-white shadow-lg p-6 rounded-md"
                   >
                     <div className="pb-4">
                       <div className="flex items-start justify-between gap-4">
-                        <div className={`flex items-center gap-3 text-xl font-semibold text-gray-900 flex-1 ${poetsonOne.className} font-sans`}>                      
+                        <div className={`flex items-center gap-3 text-2xl font-semibold tracking-tight text-gray-900 flex-1 ${poetsonOne.className} font-sans`}>                      
                           {item.question}
                         </div>
                         <div className="text-right text-xs text-gray-400 mt-1 flex-shrink-0">

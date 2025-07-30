@@ -1,5 +1,6 @@
 import * as React from "react"
 import Halaney from 'next/font/local';
+import { useState, useRef, useEffect } from "react";
 
 const ages = [2, 3, 4, 5, 6, 7] as const
 
@@ -10,11 +11,30 @@ const halaney = Halaney({
 
 export default function Header({ searchTerm, setSearchTerm, selectedAge, setSelectedAge }: any) {
   
- 
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the vertical scroll position is 0
+      if (window.pageYOffset === 0) {
+        setIsAtTop(true);
+      } else {
+        setIsAtTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // Empty dependency array ensures the effect runs only once on mount
+
   return (
     <header className="sticky top-0 z-10">
               <div className="container mx-auto px-6 py-6">
-                <h1 className={`text-4xl md:text-5xl font-medium text-center text-shadow-lg text-gray-50 select-none ${halaney.className}`}>Stuff My Kids Ask</h1>
+                <h1 className={`transition-all font-medium text-center text-shadow-lg text-gray-50 select-none ${halaney.className} ${isAtTop ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl -mt-2 -mb-3'}`}>Stuff My Kids Ask</h1>
                 
                 
                 <div className="max-w-md mx-auto">

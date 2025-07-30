@@ -8,8 +8,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,6 +37,10 @@ header {
     radial-gradient(67.08px at 50% calc(100% + 60px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
   -webkit-mask: var(--mask);
           mask: var(--mask);
+}
+
+.question-card {
+
 }
 
 .answer-grownup {

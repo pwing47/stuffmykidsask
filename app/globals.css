@@ -30,12 +30,55 @@ background-size: cover;
 header {
 
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: .1s all;
 
-  --mask:
+  /* --mask:
     radial-gradient(67.08px at 50% calc(100% - 90px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
     radial-gradient(67.08px at 50% calc(100% + 60px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
   -webkit-mask: var(--mask);
-          mask: var(--mask);
+          mask: var(--mask); */
+
+  --wave-intensity: 0.5;
+  /* Create oscillating wavy bottom using clip-path */
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% calc(100% - 2rem),
+    97% calc(100% - 2rem + var(--wave-intensity) * 0.4rem),
+    94% calc(100% - 2rem + var(--wave-intensity) * 0.6rem),
+    91% calc(100% - 2rem + var(--wave-intensity) * 0.5rem),
+    88% calc(100% - 2rem + var(--wave-intensity) * 0.2rem),
+    85% calc(100% - 2rem + var(--wave-intensity) * -0.1rem),
+    82% calc(100% - 2rem + var(--wave-intensity) * -0.4rem),
+    79% calc(100% - 2rem + var(--wave-intensity) * -0.6rem),
+    76% calc(100% - 2rem + var(--wave-intensity) * -0.5rem),
+    73% calc(100% - 2rem + var(--wave-intensity) * -0.2rem),
+    70% calc(100% - 2rem + var(--wave-intensity) * 0.1rem),
+    67% calc(100% - 2rem + var(--wave-intensity) * 0.4rem),
+    64% calc(100% - 2rem + var(--wave-intensity) * 0.6rem),
+    61% calc(100% - 2rem + var(--wave-intensity) * 0.5rem),
+    58% calc(100% - 2rem + var(--wave-intensity) * 0.2rem),
+    55% calc(100% - 2rem + var(--wave-intensity) * -0.1rem),
+    52% calc(100% - 2rem + var(--wave-intensity) * -0.4rem),
+    49% calc(100% - 2rem + var(--wave-intensity) * -0.6rem),
+    46% calc(100% - 2rem + var(--wave-intensity) * -0.5rem),
+    43% calc(100% - 2rem + var(--wave-intensity) * -0.2rem),
+    40% calc(100% - 2rem + var(--wave-intensity) * 0.1rem),
+    37% calc(100% - 2rem + var(--wave-intensity) * 0.4rem),
+    34% calc(100% - 2rem + var(--wave-intensity) * 0.6rem),
+    31% calc(100% - 2rem + var(--wave-intensity) * 0.5rem),
+    28% calc(100% - 2rem + var(--wave-intensity) * 0.2rem),
+    25% calc(100% - 2rem + var(--wave-intensity) * -0.1rem),
+    22% calc(100% - 2rem + var(--wave-intensity) * -0.4rem),
+    19% calc(100% - 2rem + var(--wave-intensity) * -0.6rem),
+    16% calc(100% - 2rem + var(--wave-intensity) * -0.5rem),
+    13% calc(100% - 2rem + var(--wave-intensity) * -0.2rem),
+    10% calc(100% - 2rem + var(--wave-intensity) * 0.1rem),
+    7% calc(100% - 2rem + var(--wave-intensity) * 0.4rem),
+    4% calc(100% - 2rem + var(--wave-intensity) * 0.6rem),
+    1% calc(100% - 2rem + var(--wave-intensity) * 0.5rem),
+    0% calc(100% - 2rem + var(--wave-intensity) * 0.2rem)
+  );
 }
 
 .question-card {

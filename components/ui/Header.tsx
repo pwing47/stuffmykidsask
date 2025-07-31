@@ -10,32 +10,38 @@ const halaney = Halaney({
 });
 
 export default function Header({ searchTerm, setSearchTerm, selectedAge, setSelectedAge }: any) {
-  
-  const [isAtTop, setIsAtTop] = useState(true);
+
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if the vertical scroll position is 0
-      if (window.pageYOffset === 0) {
-        setIsAtTop(true);
-      } else {
-        setIsAtTop(false);
-      }
+      setScrollY(window.scrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+  }, []); // Empty dependency array ensures this runs once on mount
 
+  const maxScrollForScaling = 200; // scroll depth at which no longer scales down
+  const minScale = 0.5;
+  const maxScale = 1;
+
+  const scale = Math.max(
+    minScale,
+    maxScale - (scrollY / maxScrollForScaling) * (maxScale - minScale)
+  );
+  
   return (
-    <header className="sticky top-0 z-10">
+    <header className="sticky top-0 z-10" style={{ transition: 'transform 0.1s ease-out', top: scrollY >= 200 ? "-30px" : scrollY * -0.15 }}>
               <div className="container mx-auto px-6 py-6">
-                <h1 className={`transition-all font-medium text-center text-shadow-lg text-gray-50 select-none ${halaney.className} ${isAtTop ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl -mt-2 -mb-3'}`}>Stuff My Kids Ask</h1>
-                
+                <h1
+                  style={{ transform: `scale(${scale})`, transition: 'transform 0.1s ease-out' }}
+                  className={`transition-all origin-bottom -mb-1 font-medium text-center text-shadow-lg text-gray-50 select-none ${halaney.className} text-4xl md:text-5xl`}>
+                Stuff My Kids Ask
+                </h1>
                 
                 <div className="max-w-md mx-auto">
                   <input

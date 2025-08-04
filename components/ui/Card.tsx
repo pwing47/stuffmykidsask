@@ -1,6 +1,7 @@
 import { formatDate } from "@/app/helpers/formatting-helpers"
 import * as React from "react"
 import { Poetsen_One } from 'next/font/google';
+import { useEffect, useRef, useState } from 'react';
 
 const poetsonOne = Poetsen_One({
   subsets: ['latin'],
@@ -8,8 +9,24 @@ const poetsonOne = Poetsen_One({
 });
 
 export default function Card({item, kidAnswer, selectedAge, setSelectedAge}: any) {
-  
- 
+    
+  const grownupAnswerRef = useRef(null);
+  const [expandable, setExpandable] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    if (grownupAnswerRef.current) {
+      if(grownupAnswerRef.current['offsetHeight'] >= 120) {        
+        setExpandable(true); // determine if element can be expanded
+      }
+    }
+  }, []); // run just once after initial render
+
+  function expandAnswer() {
+    setExpandable(false); // because it's now expanded
+    setIsExpanded(true);
+  }
+
   return (
           <div
             key={item.id}
@@ -44,8 +61,13 @@ export default function Card({item, kidAnswer, selectedAge, setSelectedAge}: any
                 <div className="text-gray-700 border-gray-200 font-bold inline-block p-1 pr-3 mb-2">
                   🧑‍🎓 For Grown-Ups
                 </div>
-                <div className="bg-slate-100/40 border-l-2 border-l-slate-100 p-4">
-                  <p className="answer-grownup text-gray-700 text-sm leading-relaxed">{item.grownup_answer}</p>
+                <div className="bg-slate-50 border-l-2 border-l-slate-100 p-4 relative">
+                  <p className={`answer-grownup text-gray-700 text-sm leading-relaxed ${isExpanded && 'expanded'}`} ref={grownupAnswerRef}>{item.grownup_answer}</p>
+                  
+                  { expandable &&
+                    <div className="fade-overlay p-4 pb-3 pt-8  cursor-pointer text-center lg:text-left uppercase text-gray-600 text-sm tracking-wide" onClick={expandAnswer}>Read More</div>
+                  }
+
                 </div>
               </div>
             </div>

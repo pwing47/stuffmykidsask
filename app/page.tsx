@@ -9,13 +9,10 @@ import { Karla } from 'next/font/google';
 import Header from "@/components/ui/Header"
 import Card from "@/components/ui/Card"
 
-
 const nunito = Karla({
   subsets: ['latin'],
   weight: '400'
 });
-
-
 
 export default function Page() {
   const [selectedAge, setSelectedAge] = useState<2 | 3 | 4 | 5 | 6 | 7>(4)
@@ -48,8 +45,6 @@ export default function Page() {
     return (question[columnName] as string) || "Answer not available for this age."
   }
 
-  
-
   // Filter questions based on search term
   const filteredCards = questions.filter(
     (question) =>
@@ -57,7 +52,6 @@ export default function Page() {
       question.grownup_answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
       question.question.toLowerCase().includes(searchTerm.toLowerCase())
   )
-
   
     return (
       <div className="min-h-screen">

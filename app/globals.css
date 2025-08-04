@@ -106,3 +106,23 @@ header {
   left: 0;
   right: 0;
 }
+
+.reset-search {
+  position: absolute;
+  right: 7px;
+  padding: 10px;
+  top: 50%;
+  margin-top: -15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  background: rgba(0,0,0,0.25);
+  border-radius: 100px;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}

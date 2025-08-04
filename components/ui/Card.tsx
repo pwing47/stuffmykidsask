@@ -51,7 +51,7 @@ export default function Card({item, kidAnswer, selectedAge, setSelectedAge}: any
                     👧 For a {selectedAge}-year old
                   </div>
 
-                <div className="bg-blue-50/40 border-l-2 border-l-blue-100 p-4">
+                <div className="bg-blue-50/40 border-l-2 border-l-blue-100 p-4 rounded-sm">
                   <p className="text-gray-800 leading-relaxed">{kidAnswer}</p>
                 </div>
               </div>
@@ -61,7 +61,7 @@ export default function Card({item, kidAnswer, selectedAge, setSelectedAge}: any
                 <div className="text-gray-700 border-gray-200 font-bold inline-block p-1 pr-3 mb-2">
                   🧑‍🎓 For Grown-Ups
                 </div>
-                <div className="bg-slate-50 border-l-2 border-l-slate-100 p-4 relative">
+                <div className="bg-slate-50 border-l-2 border-l-slate-100 p-4 relative rounded-sm">
                   <p className={`answer-grownup text-gray-700 text-sm leading-relaxed ${isExpanded && 'expanded'}`} ref={grownupAnswerRef}>{item.grownup_answer}</p>
                   
                   { expandable &&

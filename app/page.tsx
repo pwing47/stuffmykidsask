@@ -8,6 +8,7 @@ import { LoadingSkeleton } from "../components/LoadingSkeleton"
 import { Karla } from 'next/font/google';
 import Header from "@/components/ui/Header"
 import Card from "@/components/ui/Card"
+import { AnimatePresence } from "motion/react"
 
 const nunito = Karla({
   subsets: ['latin'],
@@ -92,9 +93,11 @@ export default function Page() {
                       </div>
                     </div>
                   ) : (
-                    filteredCards.map((item) => (
-                      <Card key={item.id} item={item} selectedAge={selectedAge} setSelectedAge={setSelectedAge} kidAnswer={getKidAnswer(item)} />
-                    ))
+                    <AnimatePresence>
+                    {filteredCards.map((item, index) => (                      
+                        <Card key={item.id} item={item} index={index} selectedAge={selectedAge} kidAnswer={getKidAnswer(item)} />
+                    ))}
+                  </AnimatePresence>
                   )}
                 </div>
 

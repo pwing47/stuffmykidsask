@@ -82,7 +82,8 @@ header {
 }
 
 .question-card {
-
+  transform-origin: 50% 50% 0;
+  transform: 0;
 }
 
 .answer-grownup {
